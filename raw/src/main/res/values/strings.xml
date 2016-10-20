@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Raw</string>
+    <string name="text_content_default">No something here right now</string>
+    <string name="text_read_line">每次读一行</string>
+    <string name="text_read_byte">以字节方式读取</string>
+    <string name="text_res_id">使用资源id来读取</string>
+    <string name="text_media_player">音乐播放器：</string>
+    <string name="text_start">开始</string>
+    <string name="text_reset">复位</string>
+    <string name="text_pause">暂停</string>
+</resources>

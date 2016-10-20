@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">String</string>
+    <string name="text_item">项目</string>
+    <string name="text_number">数值</string>
+    <string name="text_unit">单位</string>
+    <string name="text_temp">温度</string>
+    <string name="text_price">价格</string>
+
+    <!--HTML Character Entities-->
+    <string name="html_char_quot">&#34;</string>
+    <string name="html_char_apos">\&#39;</string>
+    <string name="html_char_amp">&#38;</string>
+    <string name="html_char_lt">&#60;</string>
+    <string name="html_char_gt">&#62;</string>
+
+    <string name="html_char_yen">&#165;</string>
+    <string name="html_char_copy">&#169;</string>
+    <string name="html_char_reg">&#174;</string>
+    <string name="html_char_deg">&#176;</string>
+    <string name="html_char_raquo">&#187;</string>
+
+    <string name="html_char_times">&#215;</string>
+    <string name="html_char_divide">&#247;</string>
+    <string name="html_char_middot">&#183;</string>
+
+    <!--HTML Symbol Entities-->
+    <string name="html_symb_alpha">&#945;</string>
+    <string name="html_symb_beta">&#946;</string>
+    <string name="html_symb_gamma">&#947;</string>
+    <string name="html_symb_delta">&#948;</string>
+
+    <string name="html_symb_trade">&#8482;</string>
+
+    <string name="html_symb_larr">&#8592;</string>
+    <string name="html_symb_rarr">&#8594;</string>
+</resources>

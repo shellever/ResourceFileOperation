@@ -1,0 +1,1 @@
+include ':assets', ':raw', ':string', ':i18n'
