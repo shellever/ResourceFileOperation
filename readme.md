@@ -23,13 +23,15 @@ assets和raw目录中资源的区别
 assets和raw目录中资源的访问
 ------------------
 
-* 读取res/raw目录下的资源文件linewalker.mp3，通过以下方式获取输入流来进行写操作：
+### 读取res/raw目录下的资源文件linewalker.mp3，通过以下方式获取输入流来进行写操作：
 
 ```java
 InputStream is = getResources().openRawResource(R.raw.linewalker.mp3);
 ```
 
-1. res/raw/vocabulary.md中的内容如下：
+
+* res/raw/vocabulary.md中的内容如下：
+
 
 ```
 *	######	[*A*pple](#a "苹果")
@@ -81,7 +83,7 @@ public String getResourceFromRawByReadLine(int resId) {
 
 ![res_raw_read_line](./screenshot/res_raw_read_line.jpg)
 
-2. res/raw/vocabulary.md中的内容如下：
+* res/raw/vocabulary.md中的内容如下：
 
 ```
 7. 两个妇女在聊天，聊起自己大读大学的孩子。A：我每个月给女儿寄八百元，可女儿总是钱说不够用。不知道她都干了些什么，可真够让人担心的。B：我女儿从来都不给家里要钱，才让人担心呢。
@@ -125,7 +127,7 @@ public String getResourceFromRawByReadByte(int resId) {
 
 ![res_raw_read_byte](./screenshot/res_raw_read_byte.jpg)
 
-3. res/raw/中有traveling_light.mp3资源文件，使用R.raw.traveling_light的方式来读取文件：
+* res/raw/中有traveling_light.mp3资源文件，使用R.raw.traveling_light的方式来读取文件：
 
 使用资源文件id来初始化MediaPlayer：
 
@@ -146,7 +148,7 @@ public void initMediaPlayer(int resId) {
 ![res_raw_resid_start](./screenshot/res_raw_resid_start.jpg)
 ![res_raw_resid_pause](./screenshot/res_raw_resid_pause.jpg)
 
-* 读取assets目录下的文件资源health.txt，通过以下方式获取输入流来进行写操作：
+### 读取assets目录下的文件资源health.txt，通过以下方式获取输入流来进行写操作：
 
 ```java
 InputStream is = getResources().getAssets().open("health.txt");
@@ -156,6 +158,83 @@ or
 AssetManager am = getAssets();  
 InputStream is = am.open("health.txt");  
 ```
+
+* assets/health.txt的部分内容如下：
+
+```
+1 、巧用牙膏:若有小面积皮肤损伤或烧伤、烫伤，抹上少许牙膏，可立即止血止痛，也可防止感染，疗效颇佳。  
+
+2 、巧除纱窗油腻:可将洗衣粉、吸烟剩下的烟头一起放在水里，待溶解后，拿来擦玻璃窗、纱窗，效果均不错。  
+
+3 、将虾仁放入碗内，加一点精盐、食用碱粉，用手抓搓一会儿后用清水浸泡，然后再用清水洗净，这样能使炒出的虾仁透明如水晶，爽嫩可口。  
+
+4 、和饺子面的窍门1:在1斤面粉里掺入6个蛋清，使面里蛋白质增加，包的饺子下锅后蛋白质会很快凝固收缩，饺子起锅后收水快，不易粘连  
+
+5 、将残茶叶浸入水中数天后，浇在植物根部，可促进植物生长；把残茶叶晒干，放到厕所或沟渠里燃熏，可消除恶臭，具有驱除蚊蝇的功能。  
+...
+```
+
+使用读字节流的方式来读取文件的全部内容并显示：
+```
+public String getResourceFromAssets(String fileName){
+    String result = "";
+    InputStream in = null;
+    try {
+        in = getResources().getAssets().open(fileName);
+        byte[] data = readRawFromStream(in);
+        if(data != null) {
+            result = new String(data);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if(in != null) {
+                in.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    return result;
+}
+
+public static byte[] readRawFromStream(InputStream fis) {
+    byte[] result = null;
+    ByteArrayOutputStream bos = null;
+    try {
+        bos = new ByteArrayOutputStream();
+        byte[] buffer = new byte[10 * 1024];        // 10kB
+        int len;
+        while ((len = fis.read(buffer)) != -1) {
+            bos.write(buffer, 0, len);
+        }
+        result = bos.toByteArray();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } finally {
+        try {
+            if (bos != null) {
+                bos.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    return result;
+}
+```
+
+调用getResourceFromAssets函数来读取assets/health.txt：
+
+```
+mContentTextView = (TextView) findViewById(R.id.tv_content);
+mContentTextView.setText(getResourceFromAssets("health.txt"));
+```
+
+显示结果：
+
+![res_assets](./screenshot/res_assets.jpg)
 
 HTML字符实体的引用
 ----------------
