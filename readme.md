@@ -4,12 +4,14 @@ Android 资源文件
 assets和raw目录中资源的区别
 ------------------
 
-* 相同点
-1. 在打包生成的apk中两者目录下的文件都保持原始的文件格式，不会被编译成二进制。
+### 相同点
 
-* 不同点
-1. res/raw中的文件会被映射到R.Java文件中，访问时直接使用资源ID即R.raw.filename，而assets目录下的文件不会被映射到R.java中，访问时需借助AssetManager类。
-2. res/raw目录下不可以有目录结构，而assets则可以有目录结构，即assets目录下可以再创建子目录。
+* 在打包生成的apk中两者目录下的文件都保持原始的文件格式，不会被编译成二进制。
+
+### 不同点
+
+* res/raw中的文件会被映射到R.Java文件中，访问时直接使用资源ID即R.raw.filename，而assets目录下的文件不会被映射到R.java中，访问时需借助AssetManager类。
+* res/raw目录下不可以有目录结构，而assets则可以有目录结构，即assets目录下可以再创建子目录。
 
 **注意：**
 
